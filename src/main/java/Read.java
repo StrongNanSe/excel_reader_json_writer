@@ -41,8 +41,11 @@ public class Read {
                     int cells = xssfRow.getPhysicalNumberOfCells();
                     for (cellIndex = 0; cellIndex <= cells; cellIndex++) {
                         XSSFCell xssfCell = xssfRow.getCell(cellIndex);
-
                         String cellValue = "";
+
+                        if (xssfRow.getCell(2) == null) {
+                            break;
+                        }
 
                         if (xssfCell != null) {
                             switch (xssfCell.getCellType()) {
@@ -96,13 +99,13 @@ public class Read {
                                 licenseValue.setC13(cellValue);
                             }
 
-                            LICENSE_VALUE_MAP.put(name, licenseValue);
                         }
                     }
+                    LICENSE_VALUE_MAP.put(name, licenseValue);
                 }
             }
 
-//            System.out.println("!");
+//            System.out.println("!!!");
 //
 //            int i = 1;
 //            for (String key : LICENSE_VALUE_MAP.keySet()) {
